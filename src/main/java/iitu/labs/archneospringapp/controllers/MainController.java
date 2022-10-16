@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping("/")
-    public String indexTitle(Model model) {
+    public String getHomePage(Model model) {
         model.addAttribute("title", "Main page");
         return "index";
     }
