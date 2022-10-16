@@ -9,5 +9,4 @@ public class ArchneoSpringAppApplication {
     public static void main(String[] args) {
         SpringApplication.run(ArchneoSpringAppApplication.class, args);
     }
-
 }

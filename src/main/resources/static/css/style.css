@@ -1,0 +1,443 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjo0oSWaA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjo0oSWaA.ttf) format('truetype');
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #f8f8f8;
+}
+.wrapper .part1 {
+  background: url(https://images.wallpaperscraft.com/image/single/corridor_door_bw_141776_3840x2400.jpg) no-repeat;
+  z-index: 3;
+  background-size: cover;
+}
+.wrapper .part1 .sec1 {
+  width: 70%;
+  margin: 35px auto;
+  position: relative;
+}
+.wrapper .part1 .sec1 {
+  font-family: 'Montserrat', sans-serif;
+}
+.wrapper .part1 .sec1 .logo {
+  width: 50%;
+  font-size: 20px;
+  float: left;
+}
+.wrapper .part1 .sec1 .topnav {
+  margin-top: 23px;
+  width: 50%;
+  float: left;
+  text-align: right;
+  font-size: 16px;
+}
+.wrapper .part1 .sec1 .topnav a {
+  text-decoration: none;
+  color: #f8f8f8;
+  padding-left: 5px;
+}
+.clear {
+  clear: both;
+}
+.part1 .sec2 {
+  text-align: center;
+  margin: 200px auto;
+}
+.part1 .sec2 h1 {
+  letter-spacing: 5px;
+  font-size: 50px;
+  font-weight: 800;
+}
+.part1 .sec2 h5 {
+  margin-top: 30px;
+  letter-spacing: 4px;
+}
+.part1 .sec2 input {
+  width: 230px;
+  height: 50px;
+  background-color: #ffda7f;
+  color: #2c2c2c;
+  margin-top: 50px;
+  margin-bottom: 150px;
+}
+.part2 .sec3 {
+  background-color: #fff;
+  text-align: center;
+  color: black;
+}
+.part2 .sec3 h4 {
+  margin: 100px auto 20px;
+  color: black;
+  letter-spacing: 4px;
+}
+.part2 .sec3 hr {
+  width: 150px;
+  margin: auto;
+}
+.part2 .sec4 {
+  width: 80%;
+  margin: 30px auto;
+  color: black;
+}
+.part2 .sec4 table {
+  text-align: center;
+}
+.part2 .sec4 table tr td {
+  padding: 0 30px;
+}
+.part3 {
+  padding-top: 10px;
+  text-align: center;
+  color: black;
+  background-color: #f8f8f8;
+}
+.part3 .sec5 {
+  text-align: center;
+  color: black;
+}
+.part3 .sec5 h4 {
+  margin: 50px auto 50px;
+  color: black;
+  letter-spacing: 4px;
+}
+.part3 .sec5 hr {
+  width: 50%;
+  height: 10px;
+  border: none;
+  margin: auto;
+}
+.part3 .sec6 {
+  width: 70%;
+  position: relative;
+  background-color: black;
+  margin: 20px auto;
+}
+.part3 .sec6 .left {
+  width: 50%;
+  float: left;
+}
+.part3 .sec6 .right {
+  float: left;
+  width: 50%;
+}
+.part3 .clear {
+  clear: both;
+}
+.part3 .sec7 {
+  width: 70%;
+  margin: 30px auto;
+}
+.part3 .sec7 table tr td {
+  padding: 7px 4px;
+}
+.part4 .sec8 {
+  color: black;
+  margin: 70px auto;
+  width: 70%;
+  text-align: center;
+}
+.part4 .sec8 hr {
+  width: 30px;
+  margin: auto;
+}
+.part4 .sec8 table {
+  margin: 35px auto;
+  padding: 5px 5px;
+}
+.part4 .sec8 table tr td {
+  padding: 15px;
+}
+.part4 .sec8 img {
+  width: 300px;
+}
+.part5 {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+.part5 .sec9 {
+  width: 70%;
+  margin: 40px auto;
+}
+.part5 .sec9 h1 {
+  margin-top: 30px;
+}
+.part5 .sec9 h2 {
+  margin-top: 50px;
+}
+.part5 .sec9 input {
+  width: 170px;
+  height: 40px;
+  background-color: transparent;
+  color: white;
+  margin-top: 50px;
+}
+.part6 {
+  position: relative;
+  width: 70%;
+  margin: 60px auto;
+  color: black;
+  text-align: center;
+}
+.part6 hr {
+  width: 30px;
+  margin: auto;
+}
+.part6 .sec11 {
+  margin: 40px auto;
+}
+.part6 .sec11 .sec11left {
+  width: 45%;
+  float: left;
+}
+.part6 .sec11 .sec11right {
+  width: 55%;
+  float: left;
+  text-align: left;
+}
+.part6 .sec11 .sec11right p {
+  margin: 10px 25px;
+}
+.part6 .sec11 .sec11right .lleft {
+  width: 20%;
+  float: left;
+}
+.part6 .sec11 .sec11right .lleft img {
+  width: 110px;
+}
+.part6 .sec11 .sec11right .lleft .clear {
+  clear: both;
+}
+.part6 .sec11 .sec11right .rright {
+  width: 80%;
+  float: left;
+  line-height: 20px;
+}
+.part6 .sec11 .sec11right .rright p {
+  text-align: left;
+  margin: 30px 5px;
+}
+.part6 .sec11 .sec11right h4 {
+  color: #c0301c;
+}
+.part7 {
+  position: relative;
+  width: 70%;
+  margin: 60px auto;
+  color: black;
+  text-align: center;
+}
+.part7 hr {
+  width: 30px;
+  margin: auto;
+}
+.part7 .sec12 {
+  margin: 40px auto;
+}
+.part7 .sec12 .sec12left {
+  width: 45%;
+  float: left;
+}
+.part7 .sec12 .sec12right {
+  width: 55%;
+  float: left;
+  text-align: left;
+}
+.part7 .sec12 .sec12right p {
+  margin: 10px 25px;
+}
+.part7 .sec12 .sec12right .llleft {
+  width: 20%;
+  float: left;
+}
+.part7 .sec12 .sec12right .llleft img {
+  width: 110px;
+}
+.part7 .sec12 .sec12right .llleft .clear {
+  clear: both;
+}
+.part7 .sec12 .sec12right .rrright {
+  width: 80%;
+  float: left;
+  line-height: 20px;
+}
+.part7 .sec12 .sec12right .rrright p {
+  text-align: left;
+  margin: 30px 5px;
+}
+.part7 .sec12 .sec12right h4 {
+  color: #c0301c;
+}
+.part8 {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 40px 20px;
+  color: black;
+}
+.part8 .sec13 {
+  width: 60%;
+  margin: 30px auto;
+}
+.part8 .sec13 table {
+  margin: 20px auto;
+}
+.part8 .sec13 table tr td {
+  padding: 20px 20px;
+}
+.part9 {
+  position: relative;
+  width: 70%;
+  margin: 60px auto;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+}
+.part9 hr {
+  width: 30px;
+  margin: auto;
+}
+.part9 .sec15 {
+  position: relative;
+  box-sizing: border-box;
+}
+.part9 .sec15 .t1 {
+  width: 35%;
+  float: left;
+  text-align: left;
+}
+.part9 .sec15 .t1 ul {
+  list-style-type: none;
+}
+.part9 .sec15 .t2 {
+  width: 65%;
+  float: left;
+  position: relative;
+  text-align: left;
+}
+.part9 .sec15 .t2 .tt1 {
+  width: 45%;
+  float: left;
+}
+.part9 .sec15 .t2 .tt1 input {
+  width: 250px;
+  height: 35px;
+  margin: 5px auto;
+}
+.part9 .sec15 .t2 .tt2 {
+  width: 45%;
+  float: left;
+}
+.part9 .sec15 .t2 .tt2 input {
+  width: 250px;
+  height: 35px;
+  margin: 5px auto;
+}
+.part9 .sec15 .t3 {
+  width: 65%;
+  float: left;
+  position: relative;
+  text-align: left;
+}
+.part9 .sec15 .t3 .tt3 {
+  width: 45%;
+  float: left;
+}
+.part9 .sec15 .t3 .tt3 input {
+  width: 250px;
+  height: 35px;
+  margin: 5px auto;
+}
+.part9 .sec15 .t3 .tt4 {
+  width: 45%;
+  float: left;
+}
+.part9 .sec15 .t3 .tt4 input {
+  width: 250px;
+  height: 35px;
+  margin: 5px auto;
+}
+.part9 .sec15 .t4 {
+  width: 65%;
+  float: left;
+  position: relative;
+  text-align: left;
+  margin: 15px auto;
+}
+.part9 .sec15 .t4 input {
+  width: 560px;
+  height: 110px;
+}
+.part9 .sec15 .t5 {
+  width: 65%;
+  float: left;
+  position: relative;
+  text-align: left;
+}
+.part9 .sec15 .t5 .tt5 {
+  width: 30%;
+  float: left;
+}
+.part9 .sec15 .t5 .tt5 input {
+  width: 180px;
+  height: 30px;
+  background-color: transparent;
+}
+.part9 .sec15 .t5 .tt6 {
+  width: 60%;
+  float: left;
+}
+.part9 .sec15 .t5 .tt6 p {
+  margin-top: 8px;
+  font-size: 11px;
+}
+.part10 {
+  background-color: #c0301c;
+  padding: 40px;
+  text-align: center;
+}
+.part10 .sec16 {
+  width: 50%;
+  margin: 20px auto;
+}
+.part10 .sec16 table {
+  padding: 10px 310px;
+}
+.part10 .sec16 table img {
+  width: 30px;
+  height: 30px;
+}
+.part10 .sec16 hr {
+  width: 50px;
+  margin: 40px auto;
+}
+.part10 .sec16 h5 {
+  margin: 30px auto 40px;
+}
+.part10 .sec16 p {
+  color: #c0301c;
+}
