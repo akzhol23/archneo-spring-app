@@ -13,4 +13,10 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/sign")
+    public String getSignPage(Model model) {
+        model.addAttribute("title", "Main page");
+        return "sign";
+    }
+
 }
