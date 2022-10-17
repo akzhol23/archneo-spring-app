@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="${title}"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="part1"><section class="sec1">
+        <h3 class="logo" font-weight="600"><b>ARCH NEO</b></h3>
+
+        <div class="topnav">
+            <a href="active">Home</a>
+            <a href="#services">Architectures</a>
+            <a href="#clients">Contacts</a>
+            <a href="#contact">Profile</a>
+            <a href="/sign">Sign Up</a>
+        </div>
+
+        <div class="clear"></div>
+    </section>
+
+        <section class="sec2">
+            <h1>INTERIOR DESIGN</h1>
+
+            <h5>Your Favourite Online Arch Studio</h5>
+
+            <a href="/sign">
+                <input type="button" value="Get Started">
+            </a>
+        </section>
+    </div>
+
+    <div class="part2">
+        <section class="sec3">
+            <h4>SECTIONS</h4>
+            <hr>
+            <p>Цель данного проекта заключается в создании некого моста между архитекторами и конечными пользователми.</p>
+        </section>
+
+        <section class="sec4">
+            <div th:each="card : ${cards}" class="alert alert-info mt-2">
+                <h3 th:text="${card.getFirstName()}"/>
+                <h3 th:text="${card.getLastName()}"/>
+                <p th:text="${card.getBio()}"/>
+                <a th:href="'/card/' + ${card.getId()}">Card</a>
+            </div>
+        </section>
+    </div>
+
+</div>
+</body>
+</html>
