@@ -15,6 +15,7 @@ public class MainController {
 
     @GetMapping("/sign")
     public String getSignPage(Model model) {
+        model.addAttribute("title", "Sign");
         return "sign";
     }
 
