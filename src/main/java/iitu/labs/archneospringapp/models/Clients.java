@@ -14,7 +14,7 @@ public class Clients {
 
     private String first_name, last_name, email, password, gender;
 
-    public Clients(String first_name, String last_name, String email, String password, String gender) {
+    public Clients(String email, String first_name, String last_name, String password, String gender) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
