@@ -4,8 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Date;
 
 @Entity
 public class Cards {
@@ -14,9 +17,9 @@ public class Cards {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String first_name, last_name, bio, birth, university, photo;
-    private int views, experience;
-    private double price;
+    private String first_name, last_name, bio, university, photo;
+    private Date birth;
+    private int views, experience, price;
 
     public Long getId() {
         return id;
@@ -51,7 +54,7 @@ public class Cards {
     }
 
     public void setBio(String bio) {
-        bio = bio;
+        this.bio = bio;
     }
 
     public int getViews() {
@@ -62,25 +65,24 @@ public class Cards {
         this.views = views;
     }
 
-    public String getBirth() {
+    public Date getBirth() {
         return birth;
     }
 
+    public LocalDate convertToLocalDateViaSqlDate(Date dateToConvert) {
+        return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
+    }
+
     public int getAge() {
-        String strDate = getBirth();
-        String[] subStr;
-        String delimeter = "-";
+        LocalDate date = convertToLocalDateViaSqlDate(getBirth());
         LocalDate now = LocalDate.now();
-        subStr = strDate.split(delimeter);
-        LocalDate oldDate = LocalDate.of(Integer.parseInt(subStr[0]),
-            Integer.parseInt(subStr[1]), Integer.parseInt(subStr[2]));
-        Period diff = Period.between(oldDate, now);
+        Period diff = Period.between(date, now);
 
         return diff.getYears();
     }
 
-    public void setBirth(String birth) {
-        this.birth = birth;
+    public void setBirth(String birth) throws ParseException {
+        this.birth = new SimpleDateFormat("y-MM-dd").parse(birth);
     }
 
     public String getUniversity() {
@@ -103,7 +105,11 @@ public class Cards {
         return "$" + price;
     }
 
-    public void setPrice(double price) {
+    public int getPriceDB() {
+        return price;
+    }
+
+    public void setPrice(int price) {
         this.price = price;
     }
 
