@@ -4,13 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 @Entity
 public class Cards {
@@ -20,7 +15,7 @@ public class Cards {
     private Long id;
 
     private String first_name, last_name, bio, birth, university, photo;
-    private int views;
+    private int views, experience;
     private double price;
 
     public Long getId() {
@@ -29,6 +24,10 @@ public class Cards {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getFIO() {
+        return getFirstName() + " " + getLastName();
     }
 
     public String getFirstName() {
@@ -106,5 +105,13 @@ public class Cards {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 }
