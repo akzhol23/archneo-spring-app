@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -20,6 +22,19 @@ public class CardsController {
 
     @Autowired
     private CardsRepository cardsRepository;
+
+    @GetMapping("/sign-user")
+    public String getSignPage(Model model) {
+        model.addAttribute("title", "Sign User Profile");
+        return "sign-user";
+    }
+
+    @PostMapping("/sign-user")
+    private String addUser(@RequestParam String first_name, @RequestParam String last_name, @RequestParam String bio, @RequestParam String birth, @RequestParam String university, @RequestParam String photo, @RequestParam int price, @RequestParam int experience) throws ParseException {
+        Cards cards = new Cards(first_name, last_name, bio, birth, university, photo, price, experience);
+        cardsRepository.save(cards);
+        return "redirect:/cards";
+    }
 
     @GetMapping("/cards")
     public String getCards(Model model) {
@@ -44,7 +59,7 @@ public class CardsController {
     }
 
     @PostMapping("/card/{id}/edit")
-    private String userUpdate(@PathVariable(value = "id") long id, @RequestParam String first_name, @RequestParam String last_name, @RequestParam String bio, @RequestParam String birth, @RequestParam String university, @RequestParam int price, @RequestParam String experience, Model model) throws ParseException {
+    private String userUpdate(@PathVariable(value = "id") long id, @RequestParam String first_name, @RequestParam String last_name, @RequestParam String bio, @RequestParam String birth, @RequestParam String university, @RequestParam String photo, @RequestParam int price, @RequestParam int experience, Model model) throws ParseException {
         Cards cards = cardsRepository.findById(id).orElseThrow();
         cards.setFirstName(first_name);
         cards.setLastName(last_name);
@@ -52,7 +67,8 @@ public class CardsController {
         cards.setBirth(birth);
         cards.setUniversity(university);
         cards.setPrice(price);
-        cards.setExperience(Integer.parseInt(experience));
+        cards.setPhoto(photo);
+        cards.setExperience(experience);
         cardsRepository.save(cards);
         model.addAttribute("title", "Edit User Info");
         return "redirect:/cards";

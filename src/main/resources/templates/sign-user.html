@@ -12,31 +12,31 @@
 <div class="form_wrapper">
     <div class="form_container" th:method="post">
         <div class="title_container">
-            <h2>Edit Form</h2>
+            <h2>SignUp Form</h2>
         </div>
-        <div class="row clearfix" th:each="card : ${cards}">
+        <div class="row clearfix">
             <div class="">
                 <form method="post">
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="first_name" th:value="${card.getFirstName()}" placeholder="First name"/>
+                        <input type="text" name="first_name" placeholder="First name"/>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="last_name" th:value="${card.getLastName()}" placeholder="Last name"/>
+                        <input type="text" name="last_name" placeholder="Last name"/>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="bio" th:value="${card.getBio()}" placeholder="Bio"/>
+                        <input type="text" name="bio" placeholder="Bio"/>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="date" name="birth" th:value="${card.getBirth()}" placeholder="Birth date"/>
+                        <input type="date" name="birth" placeholder="Birth date"/>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="university" th:value="${card.getUniversity()}" placeholder="University"/>
+                        <input type="text" name="university" placeholder="University"/>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="price" th:value="${card.getPriceDB()}" placeholder="Price"/>
+                        <input type="text" name="price" placeholder="Price"/>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="text" name="experience" th:value="${card.getExperience()}" placeholder="Experience"/>
+                        <input type="text" name="experience" placeholder="Experience"/>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>>
                         <label for="avatarFile">Select an image: </label>

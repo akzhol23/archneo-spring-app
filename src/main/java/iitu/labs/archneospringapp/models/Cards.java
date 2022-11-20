@@ -14,12 +14,27 @@ import java.util.Date;
 public class Cards {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String first_name, last_name, bio, university, photo;
     private Date birth;
     private int views, experience, price;
+
+    public Cards(String first_name, String last_name, String bio, String birth, String university, String photo, int price, int experience) throws ParseException {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.bio = bio;
+        this.birth = new SimpleDateFormat("y-MM-dd").parse(birth);
+        this.university = university;
+        this.photo = photo;
+        this.price = price;
+        this.experience = experience;
+    }
+
+    public Cards() {
+
+    }
 
     public Long getId() {
         return id;
@@ -46,7 +61,7 @@ public class Cards {
     }
 
     public void setLastName(String last_name) {
-        last_name = last_name;
+        this.last_name = last_name;
     }
 
     public String getBio() {
