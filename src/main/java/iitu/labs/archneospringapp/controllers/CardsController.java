@@ -58,6 +58,14 @@ public class CardsController {
         return "redirect:/cards";
     }
 
+    @PostMapping("/card/{id}/remove")
+    private String userDelete(@PathVariable(value = "id") long id, Model model) throws ParseException {
+        Cards cards = cardsRepository.findById(id).orElseThrow();
+        cardsRepository.delete(cards);
+        model.addAttribute("title", "Delete User Info");
+        return "redirect:/cards";
+    }
+
     private boolean isIdExist(@PathVariable("id") long id, Model model) {
         if(!cardsRepository.existsById(id)) {
             return true;

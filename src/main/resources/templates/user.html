@@ -28,9 +28,9 @@
                     <button class="btn">
                         <span class="buy"><a th:href="'/card/' + ${card.getId()} + '/edit'">Редактировать</a></span>
                     </button><br><br>
-                    <button class="btn">
-                        <span class="buy"><a th:href="'/card/' + ${card.getId()} + '/remove'">Удалить</a></span>
-                    </button>
+                    <form th:action="'/card/' + ${card.getId()} + '/remove'" method="post">
+                        <button class="btn" type="submit">Удалить</button>
+                    </form>
 
                 </div>
 
