@@ -33,7 +33,7 @@ public class CardsController {
     }
 
     @PostMapping("/login-user")
-    private String login(@RequestParam String email, @RequestParam String password) throws ParseException {
+    private String login(@RequestParam("email") String email, @RequestParam("password") String password) throws ParseException {
         Iterable<Cards> cards = cardsRepository.findAll();
         for (Cards card: cards) {
             if (Objects.equals(card.getEmail(), email)) {
