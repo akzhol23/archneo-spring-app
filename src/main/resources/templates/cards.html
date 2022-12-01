@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
     <title th:text="${title}"/>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <body>
 <div class="wrapper">
     <div class="part1"><section class="sec1">
-        <h3 class="logo" font-weight="600"><b>ARCH NEO</b></h3>
+        <h3 class="logo" font-weight="600"><b><a href="/">ARCH NEO</a></b></h3>
 
         <div class="topnav">
             <a href="/sign">Sign Up</a>
@@ -73,6 +73,36 @@
             </div>
 
         </div>
+
+    </div>
+
+    <div class="part3">
+
+        <input type="button" id="get" value="Получить список"/>
+        <ul id="list"></ul>
+        <script>
+            function getData() {
+                const requestURL = `/get-all`;
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', requestURL);
+                xhr.onload = function () {
+                    if (xhr.status !== 200) {
+                        return;
+                    }
+                    const response = JSON.parse(xhr.response);
+                    console.log(response)
+                    let html = [];
+                    for (let i = 0, length = response.length; i < length; i++) {
+                        html.push(`<li>${response[i].email}</li>`);
+                    }
+                    document.querySelector('#list').innerHTML = html.join('');
+                }
+                xhr.send();
+            }
+            document.querySelector('#get').addEventListener('click', () => {
+                getData();
+            });
+        </script>
 
     </div>
 

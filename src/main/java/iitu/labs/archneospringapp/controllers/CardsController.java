@@ -1,20 +1,20 @@
 package iitu.labs.archneospringapp.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import iitu.labs.archneospringapp.models.Cards;
 import iitu.labs.archneospringapp.models.Clients;
 import iitu.labs.archneospringapp.repo.CardsRepository;
+import iitu.labs.archneospringapp.repo.ClientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -23,6 +23,45 @@ public class CardsController {
     @Autowired
     private CardsRepository cardsRepository;
 
+    @Autowired
+    private ClientsRepository clientsRepository;
+
+    @GetMapping("/login-user")
+    public String getLoginPage(Model model) {
+        model.addAttribute("title", "Login User Profile");
+        return "login-user";
+    }
+
+    @PostMapping("/login-user")
+    private String login(@RequestParam String email, @RequestParam String password) throws ParseException {
+        Iterable<Cards> cards = cardsRepository.findAll();
+        for (Cards card: cards) {
+            if (Objects.equals(card.getEmail(), email)) {
+                if (Objects.equals(card.getPassword(), password)) {
+                    int id = Math.toIntExact(card.getId());
+                    return "redirect:/card/" + id;
+                }
+            }
+        };
+        return "redirect:/cards";
+    }
+
+    @RequestMapping(value="/get-all")
+    @ResponseBody
+    public String getAll() {
+        return convertObjectToJSON(clientsRepository.findAll());
+    }
+
+    public String convertObjectToJSON(Iterable<Clients> cards) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(cards);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
     @GetMapping("/sign-user")
     public String getSignPage(Model model) {
         model.addAttribute("title", "Sign User Profile");
@@ -30,8 +69,8 @@ public class CardsController {
     }
 
     @PostMapping("/sign-user")
-    private String addUser(@RequestParam String first_name, @RequestParam String last_name, @RequestParam String bio, @RequestParam String birth, @RequestParam String university, @RequestParam String photo, @RequestParam int price, @RequestParam int experience) throws ParseException {
-        Cards cards = new Cards(first_name, last_name, bio, birth, university, photo, price, experience);
+    private String addUser(@RequestParam String password, @RequestParam String email, @RequestParam String first_name, @RequestParam String last_name, @RequestParam String bio, @RequestParam String birth, @RequestParam String university, @RequestParam String photo, @RequestParam int price, @RequestParam int experience) throws ParseException {
+        Cards cards = new Cards(first_name, last_name, bio, birth, university, photo, email, password, price, experience);
         cardsRepository.save(cards);
         return "redirect:/cards";
     }

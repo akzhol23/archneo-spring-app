@@ -17,11 +17,11 @@ public class Cards {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String first_name, last_name, bio, university, photo;
+    private String first_name, last_name, bio, university, photo, email, password;
     private Date birth;
     private int views, experience, price;
 
-    public Cards(String first_name, String last_name, String bio, String birth, String university, String photo, int price, int experience) throws ParseException {
+    public Cards(String first_name, String last_name, String bio, String birth, String university, String photo, String email, String password, int price, int experience) throws ParseException {
         this.first_name = first_name;
         this.last_name = last_name;
         this.bio = bio;
@@ -30,6 +30,8 @@ public class Cards {
         this.photo = photo;
         this.price = price;
         this.experience = experience;
+        this.email = email;
+        this.password = password;
     }
 
     public Cards() {
@@ -134,5 +136,21 @@ public class Cards {
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
