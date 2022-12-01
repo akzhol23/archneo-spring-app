@@ -3,6 +3,7 @@ package iitu.labs.archneospringapp.controllers;
 import iitu.labs.archneospringapp.models.Cards;
 import iitu.labs.archneospringapp.repo.CardsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,8 @@ public class CardsController {
     @Autowired
     private CardsRepository cardsRepository;
 
+    SCryptPasswordEncoder encoder = new SCryptPasswordEncoder(16384, 8, 4, 32, 64);
+
     @GetMapping("/login-user")
     public String getLoginPage(Model model) {
         model.addAttribute("title", "Login User Profile");
@@ -29,7 +32,7 @@ public class CardsController {
         Iterable<Cards> cards = cardsRepository.findAll();
         for (Cards card: cards) {
             if (Objects.equals(card.getEmail(), email)) {
-                if (Objects.equals(card.getPassword(), password)) {
+                if (encoder.matches(password, card.getPassword())) {
                     int id = Math.toIntExact(card.getId());
                     return "redirect:/card/" + id;
                 }
@@ -46,7 +49,7 @@ public class CardsController {
 
     @PostMapping("/sign-user")
     private String addUser(@RequestParam String password, @RequestParam String email, @RequestParam String first_name, @RequestParam String last_name, @RequestParam String bio, @RequestParam String birth, @RequestParam String university, @RequestParam String photo, @RequestParam int price, @RequestParam int experience) throws ParseException {
-        Cards cards = new Cards(first_name, last_name, bio, birth, university, photo, email, password, price, experience);
+        Cards cards = new Cards(first_name, last_name, bio, birth, university, photo, email, encoder.encode(password), price, experience);
         cardsRepository.save(cards);
         return "redirect:/cards";
     }
