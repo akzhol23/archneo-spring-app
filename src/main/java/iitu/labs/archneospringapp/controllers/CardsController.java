@@ -1,17 +1,12 @@
 package iitu.labs.archneospringapp.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import iitu.labs.archneospringapp.models.Cards;
-import iitu.labs.archneospringapp.models.Clients;
 import iitu.labs.archneospringapp.repo.CardsRepository;
-import iitu.labs.archneospringapp.repo.ClientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -23,9 +18,6 @@ public class CardsController {
     @Autowired
     private CardsRepository cardsRepository;
 
-    @Autowired
-    private ClientsRepository clientsRepository;
-
     @GetMapping("/login-user")
     public String getLoginPage(Model model) {
         model.addAttribute("title", "Login User Profile");
@@ -33,7 +25,7 @@ public class CardsController {
     }
 
     @PostMapping("/login-user")
-    private String login(@RequestParam("email") String email, @RequestParam("password") String password) throws ParseException {
+    private String loginUser(@RequestParam String email, @RequestParam String password) {
         Iterable<Cards> cards = cardsRepository.findAll();
         for (Cards card: cards) {
             if (Objects.equals(card.getEmail(), email)) {
@@ -44,22 +36,6 @@ public class CardsController {
             }
         };
         return "redirect:/cards";
-    }
-
-    @RequestMapping(value="/get-all")
-    @ResponseBody
-    public String getAll() {
-        return convertObjectToJSON(clientsRepository.findAll());
-    }
-
-    public String convertObjectToJSON(Iterable<Clients> cards) {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(cards);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 
     @GetMapping("/sign-user")
