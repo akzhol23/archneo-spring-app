@@ -1,7 +1,10 @@
 package iitu.labs.archneospringapp.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import iitu.labs.archneospringapp.models.Cards;
+import iitu.labs.archneospringapp.models.Clients;
 import iitu.labs.archneospringapp.repo.CardsRepository;
+import iitu.labs.archneospringapp.repo.ClientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,9 @@ public class CardsController {
 
     @Autowired
     private CardsRepository cardsRepository;
+
+    @Autowired
+    private ClientsRepository clientsRepository;
 
     SCryptPasswordEncoder encoder = new SCryptPasswordEncoder(16384, 8, 4, 32, 64);
 
@@ -39,6 +45,22 @@ public class CardsController {
             }
         };
         return "redirect:/cards";
+    }
+
+    @RequestMapping(value="/get-all")
+    @ResponseBody
+    public String getAll() {
+        return convertObjectToJSON(clientsRepository.findAll());
+    }
+
+    public String convertObjectToJSON(Iterable<Clients> cards) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(cards);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @GetMapping("/sign-user")
